@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "newman",
+		"_postman_id": "b15c7f7d-4f24-38e3-8aa0-2277295b6f65",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://config-dev.icp-acn.com/welcome",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://config-dev.icp-acn.com/welcome",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

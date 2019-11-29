@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: location-service
+---
+spring:
+  profiles: local 
+  cloud:
+    config:
+      uri: http://localhost:8088
+      name: location-service, db-config
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://icp-fargate-dev.icp-acn.com
+      name: location-service, db-config
+
+---
+spring:
+  profiles: qa
+  cloud:
+    config:
+      uri: http://icp-fargate-qa.icp-acn.com
+      name: location-service, db-config

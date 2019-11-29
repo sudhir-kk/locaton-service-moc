@@ -1,0 +1,41 @@
+{
+    "family": "{{task_def_family}}",
+    "taskRoleArn": "{{task_role_arn}}",
+    "executionRoleArn": "{{task_role_arn}}",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "{{container_name}}",
+            "image": "{{image}}",
+            "cpu": 512,
+            "memory": 1024,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+			"environment": [
+                {
+                    "name": "SPRING_PROFILES_ACTIVE",
+					"value": "{{spring_profiles_active}}"
+                }
+			],
+            "privileged": false,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+					"awslogs-region": "{{aws_region}}",
+					"awslogs-group": "{{cloudwatch_log_group_name}}",
+					"awslogs-stream-prefix": "{{container_name}}"
+                }
+            }
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024"
+}
